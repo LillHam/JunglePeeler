@@ -5,48 +5,54 @@ using UnityEngine.UI;
 
 public class BananaClick : MonoBehaviour
 {
-    [SerializeField] int costAmount1;
-    [SerializeField] int costAmount2;
+    [SerializeField] int apeCosts;
+    [SerializeField] int multplierCosts;
 
-    int clickMultiplier;
+    int AmountofClickMultiplier;
     int amountOfMonkeys;
 
     public TMPro.TextMeshProUGUI ClicksTotalText;
+    public TMPro.TextMeshProUGUI MultiplierCostText;
+    public TMPro.TextMeshProUGUI ApeCostText;
 
     float TotalClicks;
 
     private void Start()
     {
-        clickMultiplier = 0;
+        AmountofClickMultiplier = 0;
         amountOfMonkeys = 0;
+        apeCosts = 5; 
+        multplierCosts = 5;
     }
     private void Update()
     {
         ClicksTotalText.text = TotalClicks.ToString("0");
+        MultiplierCostText.text = multplierCosts.ToString("0");
+        ApeCostText.text = apeCosts.ToString("0");
     }
     public void AddClicks()
     {
-        TotalClicks += 1 + clickMultiplier;
+        TotalClicks += 1 + AmountofClickMultiplier;
     }
     public void ApUpgradering()
     {
-        if (TotalClicks >= costAmount1)
+        if (TotalClicks >= apeCosts)
         {
             float currentClicks = TotalClicks;
             amountOfMonkeys++;
-            TotalClicks = currentClicks - costAmount1;
-            costAmount1 *= 2;
+            TotalClicks = currentClicks - apeCosts;
+            apeCosts *= 2;
         }
     }
 
     public void FördubblingsUppgradering()
     {
-        if (TotalClicks >= costAmount2)
+        if (TotalClicks >= multplierCosts)
         {
             float currentClicks = TotalClicks;
-            clickMultiplier++;
-            TotalClicks = currentClicks - costAmount2;
-            costAmount2 *= 2;
+            AmountofClickMultiplier++;
+            TotalClicks = currentClicks - multplierCosts;
+            multplierCosts *= 2;
         }
     }
 
