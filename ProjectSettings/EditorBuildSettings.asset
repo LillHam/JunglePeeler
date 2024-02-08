@@ -6,6 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 464b86106ee79364db3c0955f9a3a1d9
+  - enabled: 1
+    path: Assets/Scenes/Gabriel.unity
+    guid: 7b96e29d85f1f06469c85b351b5e0654
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 322c682404eba9149ae48c31345922c6
     path: Assets/Scenes/MenuScene.unity
     guid: 5b6964e97ea0e9d4aba3448a3018299a
   - enabled: 1
