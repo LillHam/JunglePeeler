@@ -9,7 +9,8 @@ public class BananaClick : MonoBehaviour
     [SerializeField] int multplierCosts;
 
     int AmountofClickMultiplier;
-    int amountOfMonkeys;
+    float amountOfMonkeys;
+    bool isCountingdownAC;
 
     public TMPro.TextMeshProUGUI ClicksTotalText;
     public TMPro.TextMeshProUGUI MultiplierCostText;
@@ -23,12 +24,18 @@ public class BananaClick : MonoBehaviour
         amountOfMonkeys = 0;
         apeCosts = 5; 
         multplierCosts = 5;
+        isCountingdownAC = false;
     }
     private void Update()
     {
         ClicksTotalText.text = TotalClicks.ToString("0");
         MultiplierCostText.text = multplierCosts.ToString("0");
         ApeCostText.text = apeCosts.ToString("0");
+
+        if (isCountingdownAC == false)
+        {
+            StartCoroutine(AutoclickCountdown());
+        }    
     }
     public void AddClicks()
     {
@@ -39,7 +46,7 @@ public class BananaClick : MonoBehaviour
         if (TotalClicks >= apeCosts)
         {
             float currentClicks = TotalClicks;
-            amountOfMonkeys++;
+            amountOfMonkeys = +0.2f;
             TotalClicks = currentClicks - apeCosts;
             apeCosts *= 2;
         }
@@ -54,6 +61,15 @@ public class BananaClick : MonoBehaviour
             TotalClicks = currentClicks - multplierCosts;
             multplierCosts *= 2;
         }
+    }
+
+    IEnumerator AutoclickCountdown()
+    {
+        isCountingdownAC = true;
+        yield return new WaitForSeconds(5 - amountOfMonkeys);
+        AddClicks();
+        isCountingdownAC = false;
+        yield return null;
     }
 
 }
